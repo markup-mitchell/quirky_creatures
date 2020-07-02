@@ -4,7 +4,7 @@
   "description": "generate simple html site from cloudinary API",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "node ./index.js"
   },
   "author": "Mark Mitchell",
   "license": "ISC",
