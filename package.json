@@ -1,0 +1,15 @@
+{
+  "name": "quirky_creatures",
+  "version": "1.0.0",
+  "description": "generate simple html site from cloudinary API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mark Mitchell",
+  "license": "ISC",
+  "dependencies": {
+    "cloudinary": "^1.22.0",
+    "fs-extra": "^9.0.1"
+  }
+}
