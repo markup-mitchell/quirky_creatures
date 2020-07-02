@@ -39,45 +39,6 @@ const initialize = async (folderName) => {
   addHomepage(data.resources);
 };
 
-// present issue numbers highest to lowest
-//   data.titles = await Array.from(data.uniqueFolderPaths).reverse();
-
-//   data.issues = await data.titles.map((title) =>
-//     getIssue(title, data.resources)
-//   );
-
-//   if ((await data.resources.length) > 400) {
-//     console.log(
-//       'WARNING: you may need to make multiple calls soon to bypass 500 result limit. https://github.com/spitchell/minicomics/projects/1#card-39360692'
-//     );
-//   }
-
-//   data.issues.forEach((issue) => addComic(issue));
-//   addHomepage(data.issues);
-//   addManifest(data.resources);
-// };
-
 initialize('quirky_creatures');
-
-// const getIssue = (title, resources) => {
-//   const pagesData = [];
-//   resources.forEach((resource) => {
-//     if (resource.public_id.split('/')[1] === title) {
-//       // amend url to optimise image on fetch via cloudinary transformation
-//       let imageParams = {
-//         url: resource.secure_url.replace('upload/', 'upload/w_425/')
-//       };
-//       // add alt text specified at source or default message
-//       Object.assign(
-//         imageParams,
-//         !!resource.context
-//           ? { alt: resource.context.custom.alt }
-//           : { alt: 'Alt text pending - apologies.' }
-//       );
-//       pagesData.push(imageParams);
-//     }
-//   });
-//   return { title: title, pages: pagesData };
-// };
 
 module.exports = data;
