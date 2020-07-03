@@ -34,7 +34,6 @@ const initialize = async (folderName) => {
       }
     )
   );
-  console.log(data);
 
   addHomepage(data.resources);
 };

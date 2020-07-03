@@ -17,10 +17,17 @@ const fs = require('fs');
 //   }
 // }
 
+const transformedUrl = (url) => {
+  //  eg https://res.cloudinary.com/repo/image/upload/t_height_260/v1593725281/quirky_creatures/zebras_jvi3dx.png
+  return url.replace('upload/', 'upload/t_height_260/');
+};
+
 const homepage = (creatures) => `
 <!DOCTYPE html>
 <html lang="en">
     <head>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Piedra&display=swap');</style>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="${config.description}" />
@@ -39,7 +46,7 @@ const homepage = (creatures) => `
                 ${creatures
                   .map((creature) => {
                     return `<li class="gallery__item">
-                    <img src="${creature.secure_url}" alt=""/>
+                    <img src="${transformedUrl(creature.secure_url)}" alt=""/>
                     </li>
                   `;
                   })
