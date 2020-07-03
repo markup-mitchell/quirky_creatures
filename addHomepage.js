@@ -26,9 +26,7 @@ const homepage = (creatures) => `
 <!DOCTYPE html>
 <html lang="en">
     <head>
-    <style>
-@import url('https://fonts.googleapis.com/css2?family=Piedra&display=swap');</style>
-        <meta charset="UTF-8" />
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&display=swap" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="${config.description}" />
         <title>${config.siteName}</title>
@@ -37,12 +35,13 @@ const homepage = (creatures) => `
         <meta name="theme-color" content="#333"/>
     </head>
     <body>
-        <main>
-            <header>
-               <h1>${config.siteName}</h1>
-            </header>
-
-            <ul class="gallery">
+    <div class="wrapper">
+    <main>
+    <header>
+    <h1>${config.siteName}</h1>
+    </header>
+    
+    <ul class="gallery">
                 ${creatures
                   .map((creature) => {
                     return `<li class="gallery__item">
@@ -54,9 +53,10 @@ const homepage = (creatures) => `
                   </ul>
                   </main>
                   <!-- <footer>
-                    
-                   </footer> -->
-    </body>
+                  
+                  </footer> -->
+                  </div>
+                  </body>
 </html>
 `;
 
