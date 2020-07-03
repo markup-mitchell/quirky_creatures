@@ -30,8 +30,8 @@ ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding-top: 2rem;
-  margin: 0;
+  padding: 2rem 0 3rem;
+  margin: 2.5rem auto;
 }
 
 main {
@@ -45,8 +45,24 @@ h1 {
   color: #333;
   margin: 0;
 }
+footer {
+  width: 100vw;
+  position: absolute;
+  bottom: 0;
+  padding: 1.25rem;
+  background-color: #333;
+  margin-top: 3rem;
+}
 
+.footer-content {
+  max-width: 30rem;
+  margin: 0 auto;
+  color: white;
+  text-align: center;
+  font-family: sans-serif;
+}
 .wrapper {
+  position: relative;
   width: 100vw;
   padding: 2rem 0;
   background: radial-gradient(circle at top, white, #eed);

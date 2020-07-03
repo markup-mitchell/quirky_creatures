@@ -36,11 +36,12 @@ const homepage = (creatures) => `
     </head>
     <body>
     <div class="wrapper">
-    <main>
+    
     <header>
     <h1>${config.siteName}</h1>
     </header>
     
+    <main>
     <ul class="gallery">
                 ${creatures
                   .map((creature) => {
@@ -52,9 +53,13 @@ const homepage = (creatures) => `
                   .join('')}
                   </ul>
                   </main>
-                  <!-- <footer>
-                  
-                  </footer> -->
+                  <footer>
+                  <div class="footer-content">
+                  <p>
+                     All images &copy; Lyanne Mitchell 2020
+                  </p>
+                  </div>
+                  </footer>
                   </div>
                   </body>
 </html>
