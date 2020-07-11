@@ -6,16 +6,17 @@ media_folder: static/uploads # Media files will be stored in the repo under stat
 public_folder: /uploads # The src attribute for uploaded media will begin with /images/uploads
 
 collections:
-  - name: 'blog' # Used in routes, e.g., /admin/collections/blog
-    label: 'Blog' # Used in the UI
-    folder: 'static/_posts' # The path to the folder where the documents are stored
+  - name: 'creatures' # Used in routes, e.g., /admin/collections/blog
+    label: 'Creatures' # Used in the UI
+    folder: 'static/creatures' # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
     slug: '{{slug}}' # Filename template, e.g., title.md
     fields: # The fields for each document, usually in front matter
       - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'blog' }
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
-      - { label: 'Body', name: 'body', widget: 'markdown' }
+      - { label: 'Creature Image', name: 'creature_image', widget: 'image' }
+      - { label: 'Image Text', name: 'image_text', widget: 'string' }
 media_library:
   name: cloudinary
   config: { cloud_name: 'dzmqt79gf', api_key: 279828394296268 }
