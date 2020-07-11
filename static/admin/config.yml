@@ -13,10 +13,10 @@ collections:
     slug: '{{slug}}' # Filename template, e.g., title.md
     fields: # The fields for each document, usually in front matter
       - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'blog' }
-      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Image Text', name: 'image_text', widget: 'string' }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
       - { label: 'Creature Image', name: 'creature_image', widget: 'image' }
-      - { label: 'Image Text', name: 'image_text', widget: 'string' }
+      - { label: 'Alt Text', name: 'alt_text', widget: 'string' }
 media_library:
   name: cloudinary
   config: { cloud_name: 'dzmqt79gf', api_key: 279828394296268 }
