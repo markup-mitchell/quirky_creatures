@@ -39,6 +39,7 @@ const homepage = (creatures) => `
     
     <header>
     <h1>${config.siteName}</h1>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     </header>
     
     <main>
@@ -61,6 +62,17 @@ const homepage = (creatures) => `
                   </div>
                   </footer>
                   </div>
+                  <script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+</script>
                   </body>
 </html>
 `;
