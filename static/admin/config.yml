@@ -17,6 +17,15 @@ collections:
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
       - { label: 'Creature Image', name: 'creature_image', widget: 'image' }
       - { label: 'Alt Text', name: 'alt_text', widget: 'string' }
+  - name: 'home_content' # Used in routes, e.g., /admin/collections/blog
+    label: 'Home Content' # Used in the UI
+    folder: 'static/home_content' # The path to the folder where the documents are stored
+    create: false # Allow users to create new documents in this collection
+    fields: # The fields for each document, usually in front matter
+      - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'blog' }
+      - { label: 'Site Name', name: 'site_name', widget: 'string' }
+      - { label: 'Subheading', name: 'subheading', widget: 'markdown' }
+      - { label: 'Footer', name: 'footer', widget: 'string' }
 media_library:
   name: cloudinary
   config: { cloud_name: 'dzmqt79gf', api_key: 279828394296268 }
