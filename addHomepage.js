@@ -1,5 +1,15 @@
 const config = require('./config');
 const fs = require('fs');
+const showdown = require('showdown');
+
+const converter = new showdown.Converter();
+
+let homepageData = {};
+
+fs.readFile('static/home_content/data.json', 'utf8', function (err, data) {
+  if (err) throw err;
+  homepageData = JSON.parse(data);
+});
 
 // creatures = array of objects:
 // [{ asset_id: string(unique alphanumeric),
@@ -38,11 +48,13 @@ const homepage = (creatures) => `
     <div class="wrapper">
     
     <header>
-    <h1>${config.siteName}</h1>
+    <h1>${homepageData.site_name}</h1>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     </header>
-    
     <main>
+    <div className="subheading">
+    ${converter.makeHtml(homepageData.subheading)}
+    </div>
     <ul class="gallery">
                 ${creatures
                   .map((creature) => {
@@ -57,7 +69,7 @@ const homepage = (creatures) => `
                   <footer>
                   <div class="footer-content">
                   <p>
-                     All images &copy; Lyanne Mitchell 2020
+                     ${homepageData.footer}
                   </p>
                   </div>
                   </footer>
