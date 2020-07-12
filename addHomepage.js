@@ -52,7 +52,7 @@ const homepage = (creatures) => `
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     </header>
     <main>
-    <div className="subheading">
+    <div class="subheading">
     ${converter.makeHtml(homepageData.subheading)}
     </div>
     <ul class="gallery">
