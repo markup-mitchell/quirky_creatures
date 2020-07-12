@@ -17,26 +17,35 @@ if (!fs.existsSync(config.dev.outDir)) fs.mkdirSync(config.dev.outDir);
 fs.copy(`${config.dev.static}`, `${config.dev.outDir}`);
 
 let data = {};
+let creatures;
 
-const initialize = async (folderName) => {
-  // fetch all images from  cloudinary
-  Object.assign(
-    data,
-    await cloudinary.api.resources(
-      {
-        type: 'upload',
-        prefix: folderName,
-        max_results: 500, // the limit for a single call
-        context: true // allows alt text to be fetched
-      },
-      function (error, result) {
-        console.log(error);
-      }
-    )
-  );
+const dir = './data/creatures';
 
-  addHomepage(data.resources);
-};
+const initialize = async () =>
+  fs.readdir(dir, (err, files) => {
+    if (err) {
+      throw err;
+    }
+    files.forEach((file) => {
+      console.log(file);
+    });
+  });
+// Object.assign(
+//   data,
+//   await cloudinary.api.resources(
+//     {
+//       type: 'upload',
+//       prefix: folderName,
+//       max_results: 500, // the limit for a single call
+//       context: true // allows alt text to be fetched
+//     },
+//     function (error, result) {
+//       console.log(error);
+//     }
+//   )
+// );
+
+// addHomepage(data.resources);
 
 initialize('quirky_creatures');
 
