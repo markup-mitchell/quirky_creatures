@@ -8,15 +8,14 @@ public_folder: /uploads # The src attribute for uploaded media will begin with /
 collections:
   - name: 'creatures' # Used in routes, e.g., /admin/collections/blog
     label: 'Creatures' # Used in the UI
-    folder: 'static/creatures' # The path to the folder where the documents are stored
+    folder: 'data/creatures' # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
-    slug: '{{slug}}' # Filename template, e.g., title.md
+    extension: 'json'
     fields: # The fields for each document, usually in front matter
-      - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'blog' }
-      - { label: 'Image Text', name: 'image_text', widget: 'string' }
-      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
       - { label: 'Creature Image', name: 'creature_image', widget: 'image' }
+      - { label: 'Image Text', name: 'image_text', widget: 'string' }
       - { label: 'Alt Text', name: 'alt_text', widget: 'string' }
+      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
   - name: 'home_content' # Used in routes, e.g., /admin/collections/blog
     label: 'Home Content' # Used in the UI
     folder: 'static/home_content' # The path to the folder where the documents are stored
@@ -24,7 +23,6 @@ collections:
     extension: 'json'
     identifier_field: 'name'
     fields: # The fields for each document, usually in front matter
-      - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'blog' }
       - { label: 'Site Name', name: 'site_name', widget: 'string' }
       - { label: 'Subheading', name: 'subheading', widget: 'markdown' }
       - { label: 'Footer', name: 'footer', widget: 'string' }
