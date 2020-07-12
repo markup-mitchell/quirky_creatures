@@ -3,7 +3,6 @@ const fs = require('fs-extra'); // for easy dir cp
 const config = require('./config');
 const addHomepage = require('./addHomepage');
 const cloudinary = require('cloudinary').v2;
-const showdown = require('showdown');
 
 cloudinary.config({
   cloud_name: process.env.CLD_NAME,
@@ -40,15 +39,5 @@ const initialize = async (folderName) => {
 };
 
 initialize('quirky_creatures');
-
-let homepageData = {};
-
-fs.readFile('static/home_content/data.json', 'utf8', function (err, data) {
-  if (err) throw err;
-  homepageData = JSON.parse(data);
-  const converter = new showdown.Converter();
-  subheading = converter.makeHtml(homepageData.subheading);
-  console.log(subheading);
-});
 
 module.exports = data;

@@ -6,7 +6,7 @@ const converter = new showdown.Converter();
 
 let homepageData = {};
 
-fs.readFile('static/home_content/data.json', 'utf8', function (err, data) {
+fs.readFile('data/home_content/data.json', 'utf8', function (err, data) {
   if (err) throw err;
   homepageData = JSON.parse(data);
 });
