@@ -12,13 +12,14 @@ collections:
     create: true # Allow users to create new documents in this collection
     extension: 'json'
     fields: # The fields for each document, usually in front matter
+      - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Creature Image', name: 'creature_image', widget: 'image' }
       - { label: 'Image Text', name: 'image_text', widget: 'string' }
       - { label: 'Alt Text', name: 'alt_text', widget: 'string' }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
   - name: 'home_content' # Used in routes, e.g., /admin/collections/blog
     label: 'Home Content' # Used in the UI
-    folder: 'static/home_content' # The path to the folder where the documents are stored
+    folder: 'data/home_content' # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
     extension: 'json'
     identifier_field: 'name'
