@@ -27,10 +27,10 @@ fs.readFile('data/home_content/data.json', 'utf8', function (err, data) {
 //   }
 // }
 
-const transformedUrl = (url) => {
-  //  eg https://res.cloudinary.com/repo/image/upload/t_height_260/v1593725281/quirky_creatures/zebras_jvi3dx.png
-  return url.replace('upload/', 'upload/t_height_260/');
-};
+// const transformedUrl = (url) => {
+//   //  eg https://res.cloudinary.com/repo/image/upload/t_height_260/v1593725281/quirky_creatures/zebras_jvi3dx.png
+//   return url.replace('upload/', 'upload/t_height_260/');
+// };
 
 const homepage = (creatures) => `
 <!DOCTYPE html>
@@ -59,7 +59,10 @@ const homepage = (creatures) => `
                 ${creatures
                   .map((creature) => {
                     return `<li class="gallery__item">
-                    <img src="${transformedUrl(creature.secure_url)}" alt=""/>
+                    <img
+                      title="${creature.title}"
+                      src="${creature.creature_image}"
+                      alt="${creature.alt_text}"/>
                     </li>
                   `;
                   })
