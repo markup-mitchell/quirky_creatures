@@ -45,7 +45,6 @@ ul {
 
 main {
   margin: 2rem auto;
-  max-width: 80rem;
 }
 
 h1 {
@@ -75,9 +74,12 @@ footer {
 .footer-content {
   max-width: 30rem;
   margin: 0 auto;
-  color: white;
   text-align: center;
-  font-family: sans-serif;
+}
+
+.footer-content > p {
+  font-size: 0.8rem;
+  color: white;
 }
 .wrapper {
   position: relative;
@@ -86,6 +88,9 @@ footer {
 }
 
 @media (min-width: 500px) {
+  main {
+    max-width: 80rem;
+  }
   header {
     padding: 2rem;
   }
@@ -96,5 +101,9 @@ footer {
 
   ul {
     margin-top: 2.5rem;
+  }
+  .footer-content > p {
+    font-size: 1rem;
+    color: white;
   }
 }
