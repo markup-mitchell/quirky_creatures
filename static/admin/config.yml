@@ -24,7 +24,12 @@ collections:
     identifier_field: 'name'
     fields: # The fields for each document, usually in front matter
       - { label: 'Site Name', name: 'site_name', widget: 'string' }
-      - { label: 'Subheading', name: 'subheading', widget: 'markdown' }
+      - {
+          label: 'Subheading',
+          name: 'subheading',
+          widget: 'markdown',
+          required: false,
+        }
       - { label: 'Footer', name: 'footer', widget: 'string' }
 media_library:
   name: cloudinary
