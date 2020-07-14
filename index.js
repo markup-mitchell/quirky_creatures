@@ -15,12 +15,17 @@ const dir = './data/creatures';
 const init = async () => {
   const fileNames = await fs.readdirSync(dir);
 
-  const fileData = fileNames.map((fileName) => {
+  const pageData = await JSON.parse(
+    fs.readFileSync('data/home_content/data.json', 'utf8')
+  );
+  console.log(pageData);
+
+  const creatures = fileNames.map((fileName) => {
     return JSON.parse(fs.readFileSync(`${dir}/${fileName}`, 'utf8'));
   });
-  console.log(fileData);
+  console.log(creatures);
 
-  addHomepage(fileData);
+  addHomepage(pageData, creatures);
 };
 
 init();

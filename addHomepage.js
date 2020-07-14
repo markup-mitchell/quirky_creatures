@@ -4,35 +4,10 @@ const showdown = require('showdown');
 
 const converter = new showdown.Converter();
 
-let homepageData = {};
-
-fs.readFile('data/home_content/data.json', 'utf8', function (err, data) {
-  if (err) throw err;
-  homepageData = JSON.parse(data);
-});
-
-// creatures = array of objects:
-// [{ asset_id: string(unique alphanumeric),
-//  public_id: string(directoryName/filename_uniqueId),
-//  format: 'png',
-//  version: 1593725277,
-//  resource_type: 'image',
-//  type: 'upload',
-//  created_at: '2020-07-02T21:27:57Z',
-//  bytes: 424265,
-//  width: 576,
-//  height: 375,
-//  url: sting(url),
-//  secure_url: string(https url)
-//   }
-// }
-
-// const transformedUrl = (url) => {
-//   //  eg https://res.cloudinary.com/repo/image/upload/t_height_260/v1593725281/quirky_creatures/zebras_jvi3dx.png
-//   return url.replace('upload/', 'upload/t_height_260/');
-// };
-
-const homepage = (creatures) => `
+const homepageTemplate = async (
+  { site_name, subheading, footer },
+  creatures
+) => `
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -48,12 +23,12 @@ const homepage = (creatures) => `
     <div class="wrapper">
     
     <header>
-    <h1>${homepageData.site_name}</h1>
+    <h1>${site_name}</h1>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     </header>
     <main>
     <div class="subheading">
-    ${converter.makeHtml(homepageData.subheading)}
+    ${converter.makeHtml(subheading)}
     </div>
     <ul class="gallery">
                 ${creatures
@@ -72,7 +47,7 @@ const homepage = (creatures) => `
                   <footer>
                   <div class="footer-content">
                   <p>
-                     ${homepageData.footer}
+                     ${footer}
                   </p>
                   </div>
                   </footer>
@@ -92,11 +67,20 @@ const homepage = (creatures) => `
 </html>
 `;
 
-const addHomepage = (creatures) => {
-  fs.writeFile(`${config.dev.outDir}/index.html`, homepage(creatures), (e) => {
-    if (e) throw e;
-    console.log(`index.html was created successfully`);
-  });
+const addHomepage = async (pageData, creatures) => {
+  // const pageData = await fs.readFileSync('data/home_content/data.json', 'utf8');
+  // console.log(pageData);
+
+  // const homepage = await homepageTemplate(pageData, creatures);
+
+  fs.writeFile(
+    `${config.dev.outDir}/index.html`,
+    await homepageTemplate(pageData, creatures),
+    (e) => {
+      if (e) throw e;
+      console.log(`index.html was created successfully`);
+    }
+  );
 };
 
 module.exports = addHomepage;
