@@ -64,7 +64,7 @@ p {
 }
 
 footer {
-  width: 100vw;
+  width: 100%;
   position: absolute;
   bottom: 0;
   padding: 1.25rem;
@@ -81,7 +81,6 @@ footer {
 }
 .wrapper {
   position: relative;
-  width: 100vw;
   padding: 2rem 0;
   background: radial-gradient(circle at top, white, #eed);
 }
