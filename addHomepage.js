@@ -3,11 +3,11 @@ const fs = require('fs');
 const showdown = require('showdown');
 
 const converter = new showdown.Converter();
+const pageData = JSON.parse(
+  fs.readFileSync('data/home_content/data.json', 'utf8')
+);
 
-const homepageTemplate = async (
-  { site_name, subheading, footer },
-  creatures
-) => `
+const homepageTemplate = async (creatures) => `
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -23,12 +23,12 @@ const homepageTemplate = async (
     <div class="wrapper">
     
     <header>
-    <h1>${site_name}</h1>
+    <h1>${pageData.site_name}</h1>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     </header>
     <main>
     <div class="subheading">
-    ${converter.makeHtml(subheading)}
+    ${converter.makeHtml(pageData.subheading)}
     </div>
     <ul class="gallery">
                 ${creatures
@@ -47,7 +47,7 @@ const homepageTemplate = async (
                   <footer>
                   <div class="footer-content">
                   <p>
-                     ${footer}
+                     ${pageData.footer}
                   </p>
                   </div>
                   </footer>
@@ -67,20 +67,10 @@ const homepageTemplate = async (
 </html>
 `;
 
-const addHomepage = async (pageData, creatures) => {
-  // const pageData = await fs.readFileSync('data/home_content/data.json', 'utf8');
-  // console.log(pageData);
+const addHomepage = async (creatures) => {
+  const homepage = await homepageTemplate(creatures);
 
-  // const homepage = await homepageTemplate(pageData, creatures);
-
-  fs.writeFile(
-    `${config.dev.outDir}/index.html`,
-    await homepageTemplate(pageData, creatures),
-    (e) => {
-      if (e) throw e;
-      console.log(`index.html was created successfully`);
-    }
-  );
+  fs.writeFileSync(`${config.dev.outDir}/index.html`, homepage);
 };
 
 module.exports = addHomepage;

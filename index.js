@@ -12,20 +12,14 @@ fs.copy(`${config.dev.static}`, `${config.dev.outDir}`);
 
 const dir = './data/creatures';
 
-const init = async () => {
-  const fileNames = await fs.readdirSync(dir);
-
-  const pageData = await JSON.parse(
-    fs.readFileSync('data/home_content/data.json', 'utf8')
-  );
-  console.log(pageData);
+const init = () => {
+  const fileNames = fs.readdirSync(dir);
 
   const creatures = fileNames.map((fileName) => {
     return JSON.parse(fs.readFileSync(`${dir}/${fileName}`, 'utf8'));
   });
-  console.log(creatures);
 
-  addHomepage(pageData, creatures);
+  addHomepage(creatures);
 };
 
 init();
